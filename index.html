@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHAMPS – Champlain Area Meeting on Psychological Science</title>
+
+<link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: #f5f3ef;
+    color: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER SVG ── */
+  #champs-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── HEADER WRAPPER ── */
+  /* relative positioning here is the anchor for the absolutely-positioned nav */
+  #header-wrap {
+    position: relative;
+  }
+
+  /* ── NAV BUTTONS ── */
+  #site-nav {
+    position: absolute;
+    bottom: 1ex;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    gap: clamp(4px, 1vw, 12px);
+    padding: 0 1rem;
+    /* no background — floats freely over the SVG image */
+  }
+
+  .nav-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(0.65rem, 1.2vw, 0.82rem);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: clamp(8px,1.2vw,12px) clamp(10px,2vw,26px);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    outline: none;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.55); }
+  .nav-btn.active { background: #f5f3ef; color: #0d1b2a; border-color: #f5f3ef; }
+
+  /* ── MAIN CONTENT ── */
+  #main-content {
+    flex: 1;
+    max-width: 860px;
+    width: 90%;
+    margin: 3rem auto 2rem;
+    padding: 0 1rem;
+  }
+
+  .content-panel { display: none; animation: fadeIn 0.3s ease; }
+  .content-panel.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .content-panel h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #0d1b2a;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #c8c2b6;
+    padding-bottom: 0.5rem;
+  }
+  .content-panel p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3a3530;
+    margin-bottom: 1rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0d1b2a;
+    color: rgba(255,255,255,0.55);
+    padding: 1.6rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  footer .footer-text { text-align: left; }
+  footer a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: color 0.2s;
+  }
+  footer a:hover { color: #fff; }
+  footer .footer-divider { margin: 0 0.6rem; opacity: 0.35; }
+  footer .footer-logo {
+    display: block;
+    width: clamp(120px, 18vw, 220px);
+    height: auto;
+    opacity: 0.75;
+    padding: 1ex;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+  }
+  footer .footer-logo:hover { opacity: 1; }
+  footer a:has(.footer-logo) { border-bottom: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    #site-nav { gap: 3px; padding: 0.5rem 6px; }
+    .nav-btn { padding: 7px 8px; font-size: 0.6rem; }
+    footer { flex-direction: column; align-items: center; }
+    footer .footer-text { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER + NAV OVERLAY ══ -->
+<div id="header-wrap">
+
+  <svg id="champs-svg" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="aurora-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#60f080"/>
+      <stop offset="70%"  stop-color="#c0a0ff"/>
+      <stop offset="100%" stop-color="#60d0ff"/>
+    </linearGradient>
+
+    <linearGradient id="refl-fade" x1="0" y1="0" x2="0" y2="272" gradientUnits="userSpaceOnUse">
+      <stop id="fade-stop-0" offset="80%"  stop-color="white" stop-opacity="0"/>
+      <stop id="fade-stop-1" offset="100%" stop-color="white" stop-opacity=".8"/>
+    </linearGradient>
+    <mask id="refl-mask">
+      <rect x="0" y="0" width="1000" height="272" fill="url(#refl-fade)"/>
+    </mask>
+
+    <clipPath id="svg-bounds">
+      <rect x="0" y="0" width="1000" height="400"/>
+    </clipPath>
+
+    <filter id="water-ripple" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur
+        id="pre-blur"
+        in="SourceGraphic"
+        stdDeviation="6"
+        result="blurred"/>
+      <feTurbulence
+        type="turbulence"
+        baseFrequency="0.00 0.3"
+        numOctaves="3"
+        seed="3"
+        result="noise"/>
+      <feComponentTransfer in="noise" result="centred">
+        <feFuncR type="linear" slope="2" intercept="0"/>
+        <feFuncG type="linear" slope="2" intercept="0"/>
+      </feComponentTransfer>
+      <feDisplacementMap id="disp"
+        in="blurred" in2="centred"
+        scale="24"
+        xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <image
+    href="images/aurora.png"
+    x="0" y="0"
+    width="1000" height="400"
+    preserveAspectRatio="xMidYMid slice"/>
+
+  <g font-family="'New Tegomin', serif"
+     font-size="150"
+     font-weight="800"
+     letter-spacing="0"
+     text-anchor="middle">
+    <text id="champs-main" x="500" y="265" fill="url(#aurora-grad)">
+      CHAM<tspan>P</tspan><tspan dx="-5">S</tspan>
+    </text>
+    <text id="champs-refl" x="500" y="272" fill="url(#aurora-grad)"
+      transform="scale(1,-1) translate(0,-544)"
+      filter="url(#water-ripple)"
+      mask="url(#refl-mask)">
+      CHAM<tspan>P</tspan><tspan dx="-5">S</tspan>
+    </text>
+  </g>
+
+  <g font-family="Jost" font-size="19" font-weight="400" letter-spacing="0" text-anchor="middle">
+    <text x="500" y="40" fill="white">CHAMPLAIN AREA MEETING FOR PSYCHOLOGICAL SCIENCE &mdash; October 17, 2026</text>
+  </g>
+</svg>
+
+<!-- ══ NAV (overlays SVG bottom via absolute positioning) ══ -->
+<nav id="site-nav" aria-label="Main navigation">
+  <button class="nav-btn active" data-panel="about">About</button>
+  <button class="nav-btn" data-panel="program">Program</button>
+  <button class="nav-btn" data-panel="submit">Submit Abstract</button>
+  <button class="nav-btn" data-panel="register">Register</button>
+  <button class="nav-btn" data-panel="contact">Contact</button>
+</nav>
+
+</div><!-- end #header-wrap -->
+
+<!-- ══ MAIN CONTENT ══ -->
+<main id="main-content">
+  <section id="panel-about"   class="content-panel active"></section>
+  <section id="panel-program" class="content-panel"></section>
+  <section id="panel-submit"  class="content-panel"></section>
+  <section id="panel-register"class="content-panel"></section>
+  <section id="panel-contact" class="content-panel"></section>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-text">
+    <div>&copy; <span id="year"></span> Department of Psychology, SUNY Plattsburgh.</div>
+  </div>
+  <a href="https://www.plattsburgh.edu" target="_blank" rel="noopener">
+    <img src="images/Plattsburgh Logo - Snow Goose.png" alt="SUNY Plattsburgh" class="footer-logo">
+  </a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const buttons = document.querySelectorAll('.nav-btn');
+  const panels  = document.querySelectorAll('.content-panel');
+  const cache   = {};
+
+  async function loadPanel(name) {
+    if (cache[name]) {
+      document.getElementById('panel-' + name).innerHTML = cache[name];
+      return;
+    }
+    try {
+      const response = await fetch(`content/${name}.md`);
+      if (!response.ok) throw new Error();
+      const html = marked.parse(await response.text());
+      cache[name] = html;
+      document.getElementById('panel-' + name).innerHTML = html;
+    } catch {
+      document.getElementById('panel-' + name).innerHTML =
+        `<p style="color:#a00;">Content not found — make sure <code>content/${name}.md</code> exists.</p>`;
+    }
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.panel;
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + target).classList.add('active');
+      loadPanel(target);
+    });
+  });
+
+  loadPanel('about');
+</script>
+</body>
+</html>
