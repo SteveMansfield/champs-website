@@ -4,7 +4,7 @@ The full program will be posted here once the schedule has been finalized. Check
 
 ### Provisional schedule
 
-| Time    | Event                       |
+| Time    | Event                    |
 | ------- | ------------------------ |
 | 10:00AM | Participant check in     |
 | 10:15   | Opening remarks          |

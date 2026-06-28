@@ -15,8 +15,8 @@
   body {
     font-family: 'Jost', sans-serif;
     font-weight: 300;
-    background: #f5f3ef;
-    color: #1a1a1a;
+    background: #efeff3;
+    color: #000000;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
   .content-panel h2 {
-    font-family: 'EB Garamond', serif;
+/*    font-family: 'EB Garamond', serif; */
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 600;
     color: #0d1b2a;
@@ -96,6 +96,44 @@
     color: #3a3530;
     margin-bottom: 1rem;
   }
+    
+	.content-panel table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1.5rem 0;
+		font-size: 0.95rem;
+	}
+	
+	.content-panel th {
+		background: #0d1b2a;
+		color: rgba(255,255,255,0.85);
+		font-family: 'Jost', sans-serif;
+		font-weight: 400;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		padding: 0.6rem 1rem;
+		text-align: left;
+	}
+	
+	.content-panel td {
+		padding: 0.6rem 1rem;
+		color: #3a3530;
+		border-bottom: 1px solid #e0dbd4;
+		vertical-align: top;
+	}
+	
+	.content-panel tr:last-child td {
+		border-bottom: none;
+	}
+	
+	.content-panel tbody tr:nth-child(even) {
+		background: #f0ede8;
+	}
+	
+	.content-panel tbody tr:hover {
+		background: #e8e4dd;
+	}
 
   /* ── FOOTER ── */
   footer {
