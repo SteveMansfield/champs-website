@@ -24,10 +24,12 @@
 
   /* ── HEADER SVG ── */
   #champs-svg {
-    width: 100%;
-    height: auto;
-    display: block;
+	width: 100%;
+	height: clamp(300px, 25vw, 400px);
+	display: block;
+	background: #0d1b2a;  
   }
+
 
   /* ── HEADER WRAPPER ── */
   /* relative positioning here is the anchor for the absolutely-positioned nav */
@@ -128,11 +130,11 @@
 	}
 	
 	.content-panel tbody tr:nth-child(even) {
-		background: #f0ede8;
+		background: #ebf2f9;
 	}
 	
 	.content-panel tbody tr:hover {
-		background: #e8e4dd;
+		background: #c8dbef;
 	}
 
   /* ── FOOTER ── */
