@@ -29,7 +29,18 @@
 	display: block;
 	background: #0d1b2a;  
   }
-
+	/* Visually hidden but accessible to screen readers and scanners */
+	.visually-hidden {
+	  position: absolute;
+	  width: 1px;
+	  height: 1px;
+	  padding: 0;
+	  margin: -1px;
+	  overflow: hidden;
+	  clip: rect(0, 0, 0, 0);
+	  white-space: nowrap;
+	  border: 0;
+	}
 
   /* ── HEADER WRAPPER ── */
   /* relative positioning here is the anchor for the absolutely-positioned nav */
@@ -183,11 +194,13 @@
 </style>
 </head>
 <body>
-
+<h1 class="visually-hidden">CHAMPS — Champlain Area Meeting on Psychological Science</h1>
 <!-- ══ HEADER + NAV OVERLAY ══ -->
 <div id="header-wrap">
 
-  <svg id="champs-svg" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <svg id="champs-svg"  role="img" aria-label="CHAMPS conference header image"
+  	viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Northern lights over Lake Champlain</title>
   <defs>
     <linearGradient id="aurora-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%"   stop-color="#60f080"/>
@@ -232,6 +245,7 @@
 
   <image
     href="images/aurora.png"
+    
     x="0" y="0"
     width="1000" height="400"
     preserveAspectRatio="xMidYMid slice"/>

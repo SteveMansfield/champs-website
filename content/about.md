@@ -22,7 +22,8 @@ Registration is free! Presenters and non-presenting attendees must register.
 
 Free parking is available in Campus Lots 27 & 28, directly behind Angell College Center.
 
-<iframe style="width: 100%; height: 300px; border: 0;" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.fr/en/map/champs_1423451?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=false&searchControl=null&tilelayersControl=false&embedControl=null&datalayersControl=null&onLoadPanel=none&captionBar=false&captionMenus=true&captionControl=null"></iframe>
+<iframe title="Map showing C=Conference venue, and P=Parking" loading="lazy"
+style="width: 100%; height: 300px; border: 0;" allowfullscreen allow="geolocation" src="https://umap.openstreetmap.fr/en/map/champs_1423451?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=false&searchControl=null&tilelayersControl=false&embedControl=null&datalayersControl=null&onLoadPanel=none&captionBar=false&captionMenus=true&captionControl=null"></iframe>
 
 
 
