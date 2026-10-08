@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="content/abstracts.js"></script>
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,8 +16,8 @@
   body {
     font-family: 'Jost', sans-serif;
     font-weight: 300;
-    background: #efeff3;
-    color: #000000;
+    background: #f5f3ef;
+    color: #1a1a1a;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,24 +25,12 @@
 
   /* ── HEADER SVG ── */
   #champs-svg {
-	width: 100%;
-	height: clamp(300px, 25vw, 400px);
-	display: block;
-	background: #0d1b2a;  
+    width: 100%;
+    height: clamp(300px, 25vw, 400px);
+    display: block;
+    border: 1px solid red;
+    background: #0d1b2a;  
   }
-	/* Visually hidden but accessible to screen readers and scanners */
-	.visually-hidden {
-	  position: absolute;
-	  width: 1px;
-	  height: 1px;
-	  padding: 0;
-	  margin: -1px;
-	  overflow: hidden;
-	  clip: rect(0, 0, 0, 0);
-	  white-space: nowrap;
-	  border: 0;
-	}
-
   /* ── HEADER WRAPPER ── */
   /* relative positioning here is the anchor for the absolutely-positioned nav */
   #header-wrap {
@@ -95,7 +84,7 @@
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
   .content-panel h2 {
-/*    font-family: 'EB Garamond', serif; */
+    font-family: 'EB Garamond', serif;
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 600;
     color: #0d1b2a;
@@ -109,44 +98,6 @@
     color: #3a3530;
     margin-bottom: 1rem;
   }
-    
-	.content-panel table {
-		width: 100%;
-		border-collapse: collapse;
-		margin: 1.5rem 0;
-		font-size: 0.95rem;
-	}
-	
-	.content-panel th {
-		background: #0d1b2a;
-		color: rgba(255,255,255,0.85);
-		font-family: 'Jost', sans-serif;
-		font-weight: 400;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		font-size: 0.75rem;
-		padding: 0.6rem 1rem;
-		text-align: left;
-	}
-	
-	.content-panel td {
-		padding: 0.6rem 1rem;
-		color: #3a3530;
-		border-bottom: 1px solid #e0dbd4;
-		vertical-align: top;
-	}
-	
-	.content-panel tr:last-child td {
-		border-bottom: none;
-	}
-	
-	.content-panel tbody tr:nth-child(even) {
-		background: #ebf2f9;
-	}
-	
-	.content-panel tbody tr:hover {
-		background: #c8dbef;
-	}
 
   /* ── FOOTER ── */
   footer {
@@ -184,6 +135,123 @@
   footer .footer-logo:hover { opacity: 1; }
   footer a:has(.footer-logo) { border-bottom: none; }
 
+
+  /* ── ABSTRACTS ── */
+   #session-btns {
+    display: inline-flex;
+    background: #0d1b2a;
+    border-radius: 999px;
+    padding: 5px;
+    margin-bottom: 2rem;
+    gap: 0;
+  }
+
+  .session-btn {
+    flex: 1 1 auto;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    border: none;
+    border-radius: 999px;
+    padding: 0.65rem 1.5rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.25s, color 0.25s;
+    font-family: 'Jost', sans-serif;
+  }
+  .session-btn:hover { color: rgba(255,255,255,0.9); }
+  .session-btn.active {
+    background: #f5f3ef;
+    color: #0d1b2a;
+  }
+  .session-btn .session-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .session-btn .session-sub {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.7;
+    margin-top: 0.1rem;
+  }
+  .session-btn.active .session-sub { opacity: 0.55; }
+
+  /* Each abstract as a <details> element */
+  .abstract-item {
+    border-bottom: 1px solid #e0dbd4;
+  }
+  .abstract-item:first-child { border-top: 1px solid #e0dbd4; }
+
+ .abstract-item summary {
+  list-style: none;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 1rem;
+}
+.abstract-item summary::-webkit-details-marker { display: none; }
+.abstract-item summary:hover .abstract-title { color: #1a3050; }
+
+.abstract-id {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #888;
+  min-width: 2rem;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 0.2rem;
+}
+
+.abstract-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0d1b2a;
+  flex: 1 1 80%;
+  transition: color 0.15s;
+}
+
+.abstract-authors {
+  font-size: 0.85rem;
+  color: #888;
+  flex: 1 1 80%;
+  margin-left: calc(2rem + 1rem); /* lines up under the title, past the ID */
+}
+
+.abstract-chevron {
+  font-size: 0.7rem;
+  color: #aaa;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 0.25rem;
+  transition: transform 0.2s;
+}
+.abstract-item[open] .abstract-chevron { transform: rotate(90deg); }
+  /* Expanded content */
+  .abstract-body {
+    padding: 0 0 1.2rem 3rem;
+  }
+  .abstract-body .abstract-affiliation {
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+  .abstract-body .abstract-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #3a3530;
+    text-align: justify;
+    hyphens: auto;
+    margin: 0;
+  }
+
+
+
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
     #site-nav { gap: 3px; padding: 0.5rem 6px; }
@@ -194,13 +262,11 @@
 </style>
 </head>
 <body>
-<h1 class="visually-hidden">CHAMPS — Champlain Area Meeting on Psychological Science</h1>
+
 <!-- ══ HEADER + NAV OVERLAY ══ -->
 <div id="header-wrap">
 
-  <svg id="champs-svg"  role="img" aria-label="CHAMPS conference header image"
-  	viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Northern lights over Lake Champlain</title>
+  <svg id="champs-svg" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="aurora-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%"   stop-color="#60f080"/>
@@ -245,7 +311,6 @@
 
   <image
     href="images/aurora.png"
-    
     x="0" y="0"
     width="1000" height="400"
     preserveAspectRatio="xMidYMid slice"/>
@@ -275,8 +340,7 @@
 <nav id="site-nav" aria-label="Main navigation">
   <button class="nav-btn active" data-panel="about">About</button>
   <button class="nav-btn" data-panel="program">Program</button>
-  <button class="nav-btn" data-panel="submit">Submit Abstract</button>
-  <button class="nav-btn" data-panel="register">Register</button>
+  <button class="nav-btn" data-panel="submit">View Abstracts</button>
   <button class="nav-btn" data-panel="contact">Contact</button>
 </nav>
 
@@ -286,11 +350,26 @@
 <main id="main-content">
   <section id="panel-about"   class="content-panel active"></section>
   <section id="panel-program" class="content-panel"></section>
-  <section id="panel-submit"  class="content-panel"></section>
-  <section id="panel-register"class="content-panel"></section>
+  <section id="panel-submit" class="content-panel">
+    <!-- Session selector buttons -->
+    <div id="session-btns">
+      <button class="session-btn active" data-session="morning">
+        <span class="session-label">Morning Session</span>
+        <span class="session-sub">10:45am&ndash;11:45am</span>
+      </button>
+      <button class="session-btn" data-session="afternoon">
+        <span class="session-label">Afternoon Session</span>
+        <span class="session-sub">1:45pm&ndash;2:45pm</span>
+      </button>
+    </div>
+
+    <!-- Abstract lists — one per session -->
+    <div id="abstracts-morning" class="abstract-list"></div>
+    <div id="abstracts-afternoon" class="abstract-list" style="display:none;"></div>
+  </section>
+  <section id="panel-register" class="content-panel"></section>
   <section id="panel-contact" class="content-panel"></section>
 </main>
-
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-text">
@@ -309,6 +388,7 @@
   const cache   = {};
 
   async function loadPanel(name) {
+    if (name === 'submit') return; // abstracts panel is built by JS, not markdown
     if (cache[name]) {
       document.getElementById('panel-' + name).innerHTML = cache[name];
       return;
@@ -337,6 +417,59 @@
   });
 
   loadPanel('about');
+
+  // ── ABSTRACTS ──
+
+  function buildAbstractList(session) {
+    const containerId = `abstracts-${session}`;
+    const container = document.getElementById(containerId);
+    if (container.dataset.built) return; // already rendered, don't rebuild
+
+    const filtered = abstracts
+      .filter(a => session === 'morning' ? a.A_ID % 2 !== 0 : a.A_ID % 2 === 0)
+      .sort((a, b) => a.A_ID - b.A_ID);
+
+    container.innerHTML = filtered.map(a => {
+      const affil = Array.isArray(a.affilation)
+        ? a.affilation.join('; ')
+        : (a.affilation || '');
+      return `
+        <details class="abstract-item">
+          <summary>
+            <span class="abstract-id">${a.A_ID}</span>
+            <span class="abstract-title">${a.title}</span>
+            <span class="abstract-authors">${a.authors}</span>
+            <span class="abstract-chevron">&#9654;</span>
+          </summary>
+          <div class="abstract-body">
+            <div class="abstract-affiliation">${affil}</div>
+            <div class="abstract-text">${a.abstract}</div>
+          </div>
+        </details>`;
+    }).join('');
+
+    container.dataset.built = 'true';
+  }
+
+   // Session switching
+  const sessionBtns = document.querySelectorAll('.session-btn');
+  sessionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const session = btn.dataset.session;
+      sessionBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.abstract-list').forEach(el => el.style.display = 'none');
+      document.getElementById(`abstracts-${session}`).style.display = 'block';
+      buildAbstractList(session);
+    });
+  });
+
+  // Build morning session by default when the Abstracts tab is first clicked
+  const abstractsNavBtn = document.querySelector('[data-panel="submit"]');
+  abstractsNavBtn.addEventListener('click', () => {
+    buildAbstractList('morning');
+  });
+
 </script>
 </body>
 </html>
