@@ -4,7 +4,7 @@
 // Fields: A_ID, title, authors, affilation (note spelling, oops), abstract
 
 const abstracts = [
-    { "A_ID": 12,
+    { "A_ID": 1,
       "title": "Judgments of agency and culpability for AI use in college" ,
       "authors": "Thomas Konnick, Steve Mansfield, and Cory Potts",
       "affilation": ["SUNY Plattsburgh, Plattsburgh, NY"],
@@ -122,7 +122,7 @@ const abstracts = [
 	"affilation": "Middlebury College",
 	"abstract": "National conversations about government and education often focus on parents’ roles in deciding what children learn about gender identity, expression, and stereotypes. Parental views frame how children's exposure to topics on gender diversity are both discussed and implemented or regulated. Yet, little is known about the content of and experiences informing these views. To better understand caregivers’ attitudes toward gender nonconformity and gender diversity in their own children, we will analyse survey responses from parents of 4- to 7-year-old children. Respondents (<i>n</i>=89) were recruited during the summer of 2026 through paid social media advertising and community outreach and were primarily from the New England area. The survey was administered virtually through Zoom, as part of a larger parent study. Respondents filled out four open text-response questions intended to gauge parents’ comfort with and reactions to their own child’s exposure to topics of gender diversity (e.g., “How do you feel about your child learning about topics such as gender stereotypes, gender identity, and/or gender expression? Why?”). This semester, we will use content analysis to discover themes and interrogate nuances in caregivers’ attitudes and experiences regarding gender nonconformity. Our poster will report initial thematic findings and broad observations across topics and respondents. This work can inform implementation of gender diversity education in elementary curriculum as well as interventions aimed at improving attitudes toward gender diversity. Continued research should further investigate factors that predict caregiver attitudes towards topics of gender diversity and the relationship between caregivers’ and children's attitudes.",
 },
-{   "A_ID": 1,
+{   "A_ID": 12,
 	"title":"Communication Competence Among College Students",
 	"authors":"Sebrin Aragaw",
 	"affilation": "SUNY Plattsburgh",

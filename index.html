@@ -250,7 +250,89 @@
     margin: 0;
   }
 
+/* ── SCHEDULE TABLE ── */
+.schedule-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+}
 
+/* hide the header row entirely — no labels needed for a schedule */
+.schedule-table thead {
+  display: none;
+}
+
+.schedule-table td {
+  padding: 0.7rem 1rem;
+  vertical-align: top;
+  border-bottom: 1px solid #e0dbd4;
+  color: #3a3530;
+  line-height: 1.6;
+}
+
+/* time column — fixed width, bold, dark, doesn't wrap */
+.schedule-table td:first-child {
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  color: #0d1b2a;
+  white-space: nowrap;
+  width: 140px;
+  padding-right: 1.5rem;
+}
+
+/* alternating row shading */
+.schedule-table tbody tr:nth-child(even) {
+  background: #f0ede8;
+}
+
+/* keynote row — highlight it */
+.schedule-table tbody tr:nth-child(6) {
+  background: #0d1b2a;
+}
+.schedule-table tbody tr:nth-child(6) td {
+  color: rgba(255,255,255,0.9);
+  border-bottom-color: #0d1b2a;
+}
+.schedule-table tbody tr:nth-child(6) td:first-child {
+  color: rgba(255,255,255,0.7);
+}
+
+/* on mobile, stack time above event */
+@media (max-width: 500px) {
+  .schedule-table td:first-child {
+    display: block;
+    width: 100%;
+    padding-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+  .schedule-table td:last-child {
+    display: block;
+    width: 100%;
+    padding-top: 0;
+  }
+}
+
+/* ── KEYNOTE BIO ── */
+.content-panel blockquote {
+  border-left: 3px solid #0d1b2a;
+  margin: 1.5rem 0;
+  padding: 0.8rem 1.2rem;
+  background: #f0ede8;
+  border-radius: 0 4px 4px 0;
+}
+
+.content-panel blockquote p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: #3a3530;
+  margin: 0;
+}
+
+.content-panel blockquote strong {
+  color: #0d1b2a;
+  font-weight: 600;
+}
 
   /* ── RESPONSIVE ── */
   @media (max-width: 600px) {
