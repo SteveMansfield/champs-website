@@ -4,6 +4,7 @@
 ### Schedule
 
 <div class="schedule-table">
+
 | Time    |                          |
 | ------- | ------------------------ |
 | 10:00-10:30AM | Participant check-in and Poster set-up (all posters!)   |
